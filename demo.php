@@ -21,6 +21,8 @@ if ($conn->connect_error) {
  
  
 <script type="text/javascript">
+var MAX = 6;
+
 function move(id, t, l) //Moves image 
 
 {
@@ -178,9 +180,34 @@ var EpNr = 0;
 	
 }
 
+
+function play() {
+	console.log("play pressed");
+	console.log(MAX);
+	
+	var interval = setInterval(function(){
+	var movement = 0;
+	var maxmove = MAX-EpNr+1;
+		if(movement == maxmove) {
+			clearInterval(interval);
+		} else {
+			moveAll();
+			movement++;
+		}
+	}, 5000);
+	
+	
+	
+	console.log("play stopped");
+	console.log(EpNr);
+	
+}
+
+
+
 function sizeBack() {
 	var data = <?php echo json_encode($data); ?>;
-	var names = data[EpNr][0];
+	var names = data[EpNr-1][0];
 	for(var i = 0; i < names.length; i++) {
 		document.getElementById(names[i]).style.width = 25;
 		document.getElementById(names[i]).style.height = 25;
@@ -214,7 +241,7 @@ $( function() {
     $( "#slider-range-max" ).slider({
       range: "max",
       min: 0,
-      max: 6,
+      max: MAX,
       value: 0,
       slide: function( event, ui ) {
         $( "#amount" ).val( ui.value );
@@ -228,7 +255,7 @@ $( function() {
 
  </body>
  
-<button onclick="moveAll()">Next</button>
+<button onclick="play()">Next</button>
 
 <button onclick="reset()">Back To 0</button>
 <div id="EpisodeNr"> 
