@@ -52,6 +52,48 @@
 	z-index: 2;
 }
 
+#stark{
+	position: absolute;
+	top: 10px;
+	left: 1350px;
+	z-index: 2;
+}
+#lannister{
+	position: absolute;
+	top: 10px;
+	left: 1050px;
+	z-index: 2;
+}
+#baratheon{
+	position: absolute;
+	top: 10px;
+	left: 1150px;
+	z-index: 2;
+}
+#targaryen{
+	position: absolute;
+	top: 10px;
+	left: 1250px;
+	z-index: 2;
+}
+#arryn{
+	position: absolute;
+	top: 90px;
+	left: 1350px;
+	z-index: 2;
+}
+#mormont{
+	position: absolute;
+	top: 90px;
+	left: 1250px;
+	z-index: 2;
+}
+#greyjoy{
+	position: absolute;
+	top: 90px;
+	left: 1150px;
+	z-index: 2;
+}
 #slider{
 	position: absolute;
 	top: 850px;

@@ -24,53 +24,115 @@ if ($conn->connect_error) {
  
 <script type="text/javascript">
 var MAX = 10;
+var showStark = "ON";
+var showLannister = "ON";
+var showMormont = "ON";
+var showGreyjoy = "ON";
+var showTargaryen = "ON";
+var showTully = "ON";
+var showArryn = "ON";
+var showBaratheon = "ON";
 
-function move(id, t, l) //Moves image 
-
-{
-
-document.getElementById(id).style.top = t + "px";
-document.getElementById(id).style.left = l + "px";
-document.getElementById(id).style.zIndex = l;
-}
-
-function moveSlow(id, t, l) {
-	var startingTop = parseInt(document.getElementById(id).style.top, 10);
-	var startingLeft = parseInt(document.getElementById(id).style.left, 10);
-	var intervalTop = (t - startingTop)/50;
-	var intervalLeft = (l - startingLeft)/50;
-	var i = 1;
-			//console.log(startingTop);
-			//console.log(intervalLeft);
-	var started = Date.now();
-	
-	if(startingTop != t || startingLeft != l) {
-		document.getElementById(id).style.width = 50;
-		document.getElementById(id).style.height = 50;
-	}
-	
-	var interval = setInterval(function(){
-	var movement = 0;
-		if(Date.now() - started > 1000 || movement == 20) {
-			clearInterval(interval);
-		} else {
-			move(id, startingTop+i*intervalTop, startingLeft+i*intervalLeft);
-			i++;
-			movement++;
-		}
-	}, 20);
-	
-}
 
 function onStart() {
 	alert("Test");
+}
+
+
+function toggleStark() {
+	if (showStark == "ON") {
+		showStark = "OFF";
+	} else {
+		showStark = "ON";
+	}
+	document.getElementById("stark").src = "../GoT/img/Stark"+showStark+".png";
+	set(EpNr);
+}
+function toggleLannister() {
+	if (showLannister == "ON") {
+		showLannister = "OFF";
+	} else {
+		showLannister = "ON";
+	}
+	document.getElementById("lannister").src = "../GoT/img/Lannister"+showLannister+".png";
+	set(EpNr);
+}
+function toggleGreyjoy() {
+	if (showGreyjoy == "ON") {
+		showGreyjoy = "OFF";
+	} else {
+		showGreyjoy = "ON";
+	}
+	document.getElementById("greyjoy").src = "../GoT/img/Greyjoy"+showGreyjoy+".png";
+	set(EpNr);
+}
+function toggleTully() {
+	if (showTully == "ON") {
+		showTully = "OFF";
+	} else {
+		showTully = "ON";
+	}
+	document.getElementById("tully").src = "../GoT/img/Tully"+showTully+".png";
+	set(EpNr);
+}
+function toggleTargaryen() {
+	if (showTargaryen == "ON") {
+		showTargaryen = "OFF";
+	} else {
+		showTargaryen = "ON";
+	}
+	document.getElementById("targaryen").src = "../GoT/img/Targaryen"+showTargaryen+".png";
+	set(EpNr);
+}
+function toggleBaratheon() {
+	if (showBaratheon == "ON") {
+		showBaratheon = "OFF";
+	} else {
+		showBaratheon = "ON";
+	}
+	document.getElementById("baratheon").src = "../GoT/img/Baratheon"+showBaratheon+".png";
+	set(EpNr);
+}
+function toggleMormont() {
+	if (showMormont == "ON") {
+		showMormont = "OFF";
+	} else {
+		showMormont = "ON";
+	}
+	document.getElementById("mormont").src = "../GoT/img/Mormont"+showMormont+".png";
+	set(EpNr);
+}
+function toggleArryn() {
+	if (showArryn == "ON") {
+		showArryn = "OFF";
+	} else {
+		showArryn = "ON";
+	}
+	document.getElementById("arryn").src = "../GoT/img/Arryn"+showArryn+".png";
+	set(EpNr);
 }
 
 </script>
 </head>
  <title>Interactive Game Of Thrones Map</title>
 
-<body onload="moveAll()">
+<body onload="reset()">
+ 
+ <div id = "houses">
+ 
+<img id ="stark" src="img\StarkON.png" alt="Stark" height="75" width="75" onclick="toggleStark()";> 
+<img id ="arryn" src="img\ArrynON.png" alt="Arryn" height="75" width="75" onclick="toggleArryn()";> 
+<img id ="baratheon" src="img\BaratheonON.png" alt="Baratheon" height="75" width="75" onclick="toggleBaratheon()";> 
+<img id ="greyjoy" src="img\GreyjoyON.png" alt="Greyjoy" height="75" width="75" onclick="toggleGreyjoy()";> 
+<img id ="lannister" src="img\LannisterON.png" alt="Lannister" height="75" width="75" onclick="toggleLannister()";> 
+<img id ="mormont" src="img\MormontON.png" alt="Mormont" height="75" width="75" onclick="toggleMormont()";> 
+<img id ="targaryen" src="img\TargaryenON.png" alt="Targaryen" height="75" width="75" onclick="toggleTargaryen()";> 
+
+ 
+ </div>
+ 
+ 
+ 
  
 <div id="Info">
 <img id ="charinf" src="img\background.png" alt="CharInf" height="918" width="474"> 
@@ -148,6 +210,7 @@ for($s = 1; $s < 2; $s++) {
 				${"name".$ep}[] = $tempName;
 				${"left".$ep}[] = $row2["y_value"]*25;
 				${"top".$ep}[] = $row2["x_value"]*25;
+				
 			}
 
 		} else {
@@ -165,7 +228,15 @@ for($s = 1; $s < 2; $s++) {
 		// add each row returned into an array
 		$info[] = $row;
 	}
+
+	$famres = $conn->query("SELECT character_name, character_house FROM characters");
+
+	$fam = array();
 	
+	while($row = $famres->fetch_assoc()){
+		// add each row returned into an array
+		$fam[] = $row;
+	}
 	$data = array 
 	(
 		array($nameS1E0,$topS1E0,$leftS1E0),
@@ -187,6 +258,88 @@ for($s = 1; $s < 2; $s++) {
 </div>
 <script>
 var EpNr = 0;
+
+
+function moveSlow(id, t, l, i) {
+	var fam = <?php echo json_encode($fam); ?>;
+	var data = <?php echo json_encode($data); ?>;
+	
+	name = name.replace(/([A-Z])/g, ' $1').trim();
+	//console.log("moveid:" +fam[i]["character_name"]);
+	
+	var house = fam[i]["character_house"];
+	
+	var show = window["show"+house];
+	//console.log(show);
+	
+	if(show!="OFF"){
+		var startingTop = parseInt(document.getElementById(id).style.top, 10);
+		var startingLeft = parseInt(document.getElementById(id).style.left, 10);
+		var intervalTop = (t - startingTop)/50;
+		var intervalLeft = (l - startingLeft)/50;
+		var i = 1;
+				//console.log(startingTop);
+				//console.log(intervalLeft);
+		var started = Date.now();
+		
+		if(startingTop != t || startingLeft != l) {
+			document.getElementById(id).style.width = 50;
+			document.getElementById(id).style.height = 50;
+		}
+		
+		var interval = setInterval(function(){
+		var movement = 0;
+			if(Date.now() - started > 1000 || movement == 20) {
+				clearInterval(interval);
+			} else {
+				moveS(id, startingTop+i*intervalTop, startingLeft+i*intervalLeft);
+				i++;
+				movement++;
+			}
+		}, 20);
+	} else {
+		document.getElementById(id).style.zIndex = -2;
+	}
+	
+}
+
+function move(id, t, l, i) //Moves image 
+
+{
+	// needs to get ID so can search for family
+	// then match and check if family is turned on
+	// in each toggle function, call set to current ep
+	var fam = <?php echo json_encode($fam); ?>;
+	var data = <?php echo json_encode($data); ?>;
+	
+	name = name.replace(/([A-Z])/g, ' $1').trim();
+	console.log("moveid:" +fam[i]["character_name"]);
+	
+	var house = fam[i]["character_house"];
+	
+	var show = window["show"+house];
+	console.log(show);
+	
+	if(show!="OFF") {
+		document.getElementById(id).style.top = t + "px";
+		document.getElementById(id).style.left = l + "px";
+		document.getElementById(id).style.zIndex = l;
+	} else {
+		document.getElementById(id).style.top = t + "px";
+		document.getElementById(id).style.left = l + "px";
+		document.getElementById(id).style.zIndex = -l;		
+	}
+}
+
+function moveS(id, t, l) //Moves image 
+
+{
+		document.getElementById(id).style.top = t + "px";
+		document.getElementById(id).style.left = l + "px";
+		document.getElementById(id).style.zIndex = l;
+	
+}
+
 
  function moveAll() {
 	console.log(EpNr);
@@ -210,16 +363,16 @@ var EpNr = 0;
 			//console.log(top[i]);
 			if(top[i]!=0) {
 				if(EpNr==0) {
-					move(names[i], top[i], left[i]);
+					move(names[i], top[i], left[i], i);
 				//console.log(names[i]);
 				} else {
 					if(data[EpNr-1][1][i]!=data[EpNr][1][i] || data[EpNr-1][2][i]!=data[EpNr][2][i]) {
 						if(data[EpNr-1][1][i]==0) {
-							move(names[i], top[i], left[i]);
-							console.log("init");
+							move(names[i], top[i], left[i], i);
+							//console.log("init");
 						} else {
-							console.log("moving slow:"+names[i]);
-							moveSlow(names[i], top[i], left[i]);
+							//console.log("moving slow:"+names[i]);
+							moveSlow(names[i], top[i], left[i],i);
 						}
 					} else {
 						//console.log("not moving:"+names[i]);
@@ -255,7 +408,6 @@ function onCharClick(id) {
 
 var playing = "pause";
 function play() {
-	console.log(playing);
 	document.getElementById("plays").src = "../GoT/img/"+playing+".png";
 	console.log(document.getElementById("plays").src);
 	if(playing == "pause") {
@@ -263,14 +415,14 @@ function play() {
 	} else {
 		playing = "pause";
 	}
+	console.log(playing);
 	var interval = setInterval(function(){
 	var movement = 0;
 	var maxmove = MAX-EpNr+1;
 		if(movement == maxmove || playing == "pause") {
 			console.log("Last episode reached");
 			clearInterval(interval);
-			playing = "play";
-			document.getElementById("plays").src = "../GoT/img/"+playing+".png";
+			document.getElementById("plays").src = "../GoT/img/play.png";
 		} else {
 			moveAll();
 			movement++;
@@ -285,21 +437,26 @@ function play() {
 
 function sizeBack() {
 	var data = <?php echo json_encode($data); ?>;
-	var names = data[EpNr-1][0];
-	for(var i = 0; i < names.length; i++) {
-		document.getElementById(names[i]).style.width = 25;
-		document.getElementById(names[i]).style.height = 25;
+	if(EpNr!=0) {
+		var names = data[EpNr-1][0];
+		for(var i = 0; i < names.length; i++) {
+			document.getElementById(names[i]).style.width = 25;
+			document.getElementById(names[i]).style.height = 25;
+		}
 	}
-	
 }
 function reset() {
-	EpNr = 0;
 	moveAll();
+	EpNr = 0;
 }
 
 function set(x) {
+	if(x > MAX) {
+		x = MAX;
+	}
 	EpNr = x;
-	console.log(EpNr);
+	
+	console.log("Set at Ep: "+EpNr);
 	var data = <?php echo json_encode($data); ?>;
 	var names = data[EpNr][0];
 	var top = data[EpNr][1];
@@ -307,7 +464,7 @@ function set(x) {
 	for(var i = 0; i < names.length; i++) {
 			//console.log(top[i]);
 				if(top[i]!=0) {
-					move(names[i], top[i], left[i]);
+					move(names[i], top[i], left[i], i);
 				//console.log(names[i]);
 				} else {
 					document.getElementById(names[i]).style.zIndex = -2;

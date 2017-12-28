@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 25 dec 2017 om 15:23
+-- Gegenereerd op: 28 dec 2017 om 18:19
 -- Serverversie: 10.1.26-MariaDB
 -- PHP-versie: 7.1.9
 
@@ -51,7 +51,7 @@ INSERT INTO `characters` (`character_ID`, `character_name`, `character_house`) V
 (10, 'Cersei Lannister', 'Lannister'),
 (11, 'Tyrion Lannister', 'Lannister'),
 (12, 'Jamie Lannister', 'Lannister'),
-(13, 'Joffrey Baratheon', 'Lannister'),
+(13, 'Joffrey Baratheon', 'Baratheon'),
 (14, 'Robert Baratheon', 'Stark'),
 (15, 'Khal Drogo', 'Drogo'),
 (16, 'Daenerys Targaryen', 'Targaryen'),
