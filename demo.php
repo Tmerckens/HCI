@@ -120,13 +120,13 @@ function toggleArryn() {
  
  <div id = "houses">
  
-<img id ="stark" src="img\StarkON.png" alt="Stark" height="75" width="75" onclick="toggleStark()";> 
-<img id ="arryn" src="img\ArrynON.png" alt="Arryn" height="75" width="75" onclick="toggleArryn()";> 
-<img id ="baratheon" src="img\BaratheonON.png" alt="Baratheon" height="75" width="75" onclick="toggleBaratheon()";> 
-<img id ="greyjoy" src="img\GreyjoyON.png" alt="Greyjoy" height="75" width="75" onclick="toggleGreyjoy()";> 
-<img id ="lannister" src="img\LannisterON.png" alt="Lannister" height="75" width="75" onclick="toggleLannister()";> 
-<img id ="mormont" src="img\MormontON.png" alt="Mormont" height="75" width="75" onclick="toggleMormont()";> 
-<img id ="targaryen" src="img\TargaryenON.png" alt="Targaryen" height="75" width="75" onclick="toggleTargaryen()";> 
+<img id ="stark" src="img\StarkON.png" alt="Stark" height="75" width="75" title="House Stark" onclick="toggleStark()";> 
+<img id ="arryn" src="img\ArrynON.png" alt="Arryn" height="75" width="75" title="House Arryn" onclick="toggleArryn()";> 
+<img id ="baratheon" src="img\BaratheonON.png" alt="Baratheon" height="75" width="75" title="House Baratheon" onclick="toggleBaratheon()";> 
+<img id ="greyjoy" src="img\GreyjoyON.png" alt="Greyjoy" height="75" width="75" title="House Greyjoy" onclick="toggleGreyjoy()";> 
+<img id ="lannister" src="img\LannisterON.png" alt="Lannister" height="75" width="75" title="House Lannister" onclick="toggleLannister()";> 
+<img id ="mormont" src="img\MormontON.png" alt="Mormont" height="75" width="75" title="House Mormont" onclick="toggleMormont()";> 
+<img id ="targaryen" src="img\TargaryenON.png" alt="Targaryen" height="75" width="75" title="House Targaryen" onclick="toggleTargaryen()";> 
 
  
  </div>
