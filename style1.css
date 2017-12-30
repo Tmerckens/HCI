@@ -15,7 +15,7 @@
 	z-index: 0;
 	font-size: 150%;
 	font-weight: bold;
-	font-family: "Oleo Script Swash Caps", cursive;
+	font-family: "Roboto Slab", cursive;
 }
 #icon{
 	position: absolute;
@@ -42,8 +42,8 @@
 	top: 150px;
 	left: 1512px;
 	z-index: 0;
-	font-size: 100%;
-	font-family: "Oleo Script Swash Caps", cursive;
+	font-size: 80%;
+	font-family: "Roboto Slab", cursive;
 }
 #play{
 	position: absolute;
