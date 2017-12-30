@@ -197,7 +197,7 @@ for($s = 1; $s < 2; $s++) {
 				$tempName = str_replace(' ', '',$row["character_name"]);
 				if($e==0) {
 					echo "<div>";
-					echo "<img id=\"".$tempName."\" src=\"img/".$row["character_name"].".png \" alt=\"".$row["character_name"]. "\" height=\"25\" width=\"25\" onclick=\"onCharClick(".$charCount.")\"; ";
+					echo "<img id=\"".$tempName."\" src=\"img/".$row["character_name"].".png \" alt=\"".$row["character_name"]. "\" height=\"25\" width=\"25\" title=\"".$tempName."\"onclick=\"onCharClick(".$charCount.")\"; ";
 					echo "</div> \n";
 				}
 				$charCount = $charCount+1;
