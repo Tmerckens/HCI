@@ -1,7 +1,7 @@
 <html> 
 <head>
   <meta charset="utf-8">
- <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="style1.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Oleo Script Swash Caps' rel='stylesheet'>
